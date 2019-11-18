@@ -1,6 +1,6 @@
 {
   "name": "thecrosbyfamily",
-  "version": "0.1.0",
+   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "axios": "^0.19.0",
@@ -22,13 +22,13 @@
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
+    "server": "nodemon server.js",
     "server:local": "export API_URL=https://localhost:8080; nodemon server.js",
     "local": "run-p server:local start",
     "dev": "run-p server:dev start",
     "lint": "npx eslint 'src/**'",
     "lint:fix": "npx eslint 'src/**' --fix",
-    "start": "nodemon server.js",
-    "start:ui": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "pretest": "npx eslint 'src/**'",
     "test": "react-scripts test",

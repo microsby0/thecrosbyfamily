@@ -8,11 +8,32 @@ jobs:
       - checkout
       - restore_cache:
           keys:
+            - cloud-sdk-{{ checksum "scripts/install-and-activate-google-cloud-sdk.sh" }}
+      - run:
+          name: Install and Activate Gcloud
+          command: /bin/bash scripts/install-and-activate-google-cloud-sdk.sh
+      - save_cache:
+          key: cloud-sdk-{{ checksum "scripts/install-and-activate-google-cloud-sdk.sh" }}
+          paths:
+            - ~/google-cloud-sdk
+      - restore_cache:
+          keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: yarn install
+      - run:
+          name: Installing Dependencies
+          command: yarn install
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: yarn test
+      - run:
+          name: Running Tests
+          command: yarn test
+      - run:
+          name: Building artifact
+          command: yarn build
+      - store_artifacts:
+          path: build
+      - run:
+          name: Deploying to GAE
+          command: ${HOME}/google-cloud-sdk/bin/gcloud app deploy

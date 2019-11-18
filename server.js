@@ -26,7 +26,7 @@ app.get('/health', (req, res) => {
       res.status(200).json({ version, connectedToApi: true });
     })
     .catch(error => {
-      console.error(`API is not connected: ${error.response.status}`);
+      console.error(`API is not connected: ${error.response}`);
       return res.status(200).json({ version, connectedToApi: false });
     });
 });
