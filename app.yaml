@@ -1,6 +1,7 @@
 runtime: nodejs10
-
 instance_class: F1
+
+entrypoint: yarn server
 
 env_variables:
   API_URL: "http:localhost:8081"
