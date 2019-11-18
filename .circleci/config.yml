@@ -30,5 +30,10 @@ jobs:
           name: Running Tests
           command: yarn test
       - run:
-          name: Deploy to GAE
+          name: Building artifact
+          command: yarn build
+      - store_artifacts:
+          path: build
+      - run:
+          name: Deploying to GAE
           command: ${HOME}/google-cloud-sdk/bin/gcloud app deploy
