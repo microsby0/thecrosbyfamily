@@ -6,7 +6,8 @@
     "axios": "^0.19.0",
     "express": "^4.17.1",
     "express-http-proxy": "^1.6.0",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "nodemon": "^1.19.4"
   },
   "devDependencies": {
     "node-sass": "^4.13.0",
@@ -18,18 +19,16 @@
     "@material-ui/icons": "^4.5.1",
     "eslint-config-airbnb": "^18.0.1",
     "@testing-library/react": "^9.3.2",
-    "nodemon": "^1.19.4",
     "npm-run-all": "^4.1.5"
   },
   "scripts": {
-    "server": "node server.js",
     "server:local": "export API_URL=https://localhost:8080; nodemon server.js",
-    "server:dev": "export API_URL=https://localhost:8080; nodemon server.js",
     "local": "run-p server:local start",
     "dev": "run-p server:dev start",
     "lint": "npx eslint 'src/**'",
     "lint:fix": "npx eslint 'src/**' --fix",
-    "start": "react-scripts start",
+    "start": "nodemon server.js",
+    "start:ui": "react-scripts start",
     "build": "react-scripts build",
     "pretest": "npx eslint 'src/**'",
     "test": "react-scripts test",
