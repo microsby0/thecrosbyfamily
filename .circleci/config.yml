@@ -9,10 +9,24 @@ jobs:
       - restore_cache:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-      - run: yarn install
+            - cloud-sdk-{{ checksum ".circleci/scripts/install-and-activate-google-cloud-sdk.sh" }}
+      - run:
+          name: Install and Activate Gcloud
+          command: /bin/bash .circleci/scripts/install-and-activate-google-cloud-sdk.sh
+      - save_cache:
+          key: cloud-sdk-{{ checksum ".circleci/scripts/install-and-activate-google-cloud-sdk.sh" }}
+          paths:
+            - ~/google-cloud-sdk
+      - run:
+          name: Installing Dependencies
+          command: yarn install
       - save_cache:
           key: v1-dependencies-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: yarn test
+      - run:
+          name: Running Tests
+          command: yarn test
+      - run:
+          name: Deploy to GAE
+          command: gcloud app deploy
