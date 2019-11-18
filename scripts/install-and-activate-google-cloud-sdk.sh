@@ -15,6 +15,8 @@ else
     cd ${INSTALL_DIR}
     wget ${SDK_URL} -O cloud-sdk.tar.gz
     tar -xzvf cloud-sdk.tar.gz
+
+    ${GCLOUD} components install app-engine-java
 fi
 
 echo ${GCLOUD_SERVICE_KEY} | ${GCLOUD} auth activate-service-account --key-file=-
