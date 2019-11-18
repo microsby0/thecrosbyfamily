@@ -8,7 +8,6 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-dependencies-{{ checksum "package.json" }}
             - cloud-sdk-{{ checksum "scripts/install-and-activate-google-cloud-sdk.sh" }}
       - run:
           name: Install and Activate Gcloud
@@ -17,6 +16,9 @@ jobs:
           key: cloud-sdk-{{ checksum "scripts/install-and-activate-google-cloud-sdk.sh" }}
           paths:
             - ~/google-cloud-sdk
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
       - run:
           name: Installing Dependencies
           command: yarn install
