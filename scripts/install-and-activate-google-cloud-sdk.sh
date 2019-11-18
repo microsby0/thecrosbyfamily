@@ -17,5 +17,5 @@ else
     tar -xzvf cloud-sdk.tar.gz
 fi
 
-echo ${GCLOUD_SERVICE_KEY} | gcloud auth activate-service-account --key-file=-
+echo ${GCLOUD_SERVICE_KEY} | ${GCLOUD} auth activate-service-account --key-file=-
 ${GCLOUD} config set project ${GCLOUD_PROJECT}
