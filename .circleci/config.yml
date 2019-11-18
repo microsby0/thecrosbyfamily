@@ -10,10 +10,6 @@ jobs:
           keys:
             - v1-dependencies-{{ checksum "package.json" }}
             - cloud-sdk-{{ checksum "scripts/install-and-activate-google-cloud-sdk.sh" }}
-      - run: |
-          pwd
-          ls -l
-          cat scripts/install-and-activate-google-cloud-sdk.sh
       - run:
           name: Install and Activate Gcloud
           command: /bin/bash scripts/install-and-activate-google-cloud-sdk.sh
