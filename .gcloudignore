@@ -21,6 +21,7 @@ node_modules/
 .circleci/
 *.iml
 .eslint*
+scripts/
 
 # Pre-compiled
 src/
