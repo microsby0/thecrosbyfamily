@@ -5,7 +5,7 @@ set -e
 GCLOUD_PROJECT=${GOOGLE_PROJECT_ID}
 # expecting the install directly in the home directory
 GCLOUD=${HOME}/google-cloud-sdk/bin/gcloud
-
+echo "Current GCLOUD location: ${GCLOUD_SDK_URL}"
 if ${GCLOUD} version 2>&1 >> /dev/null; then
     echo "Cloud SDK is already installed"
 else
