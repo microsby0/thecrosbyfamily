@@ -25,3 +25,5 @@ yarn-error.log*
 # Intellij
 .idea/
 *.iml
+
+src/react-app-env.d.ts

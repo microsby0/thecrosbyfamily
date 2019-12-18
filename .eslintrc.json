@@ -1,7 +1,8 @@
 {
+  "parser": "@typescript-eslint/parser",
   "extends": [
-    "airbnb",
-    "airbnb/hooks"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
   "parserOptions": {
     "ecmaVersion": 2018,
@@ -13,7 +14,6 @@
   },
   "rules": {
     "react/jsx-filename-extension": "off",
-    "import/no-extraneous-dependencies": ["error", {"devDependencies": true}],
     "max-len": ["error", 150, 2, {
       "ignoreUrls": true,
       "ignoreComments": false,
@@ -21,11 +21,10 @@
       "ignoreStrings": true,
       "ignoreTemplateLiterals": true
     }]
-//    "import/prefer-default-export": "off",
-//    "object-curly-newline": "off",
-//    "react/jsx-props-no-spreading": "off",
-//    "consistent-return": "off",
-//    "react/button-has-type": "off",
-//    "arrow-parens": ["error", "as-needed"]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
   }
 }
